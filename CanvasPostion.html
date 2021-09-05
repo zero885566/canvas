@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+  </head>
+  <body>
+      <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        canvas{
+            border: 1px solid #000000;
+          
+        }
+
+      </style>
+    <canvas id="meme"></canvas>
+
+
+
+   
+    <script>
+
+
+        var meme = document.getElementById("meme")
+        var ctx = meme.getContext('2d');
+        
+        meme.width = 800  
+        meme.height = 800  
+        
+      var time = 0
+      function draw() {
+            
+        
+            time++
+            ctx.clearRect(0,0,800,800)
+
+
+
+            ctx.beginPath()
+            for (let i = 0; i < 20; i++) {
+                let pos  = i*50
+                ctx.moveTo(pos,0)
+                ctx.lineTo(pos,800)
+                ctx.fillText(pos,pos,10)
+
+
+                ctx.moveTo(0,pos)
+                ctx.lineTo(800,pos)
+                ctx.fillText(pos,10,pos)                
+            }
+            ctx.strokeStyle = "rgb(0,0,0,0.1)"
+            ctx.stroke()
+            // 顯示座標系統
+
+            ctx.beginPath()
+            ctx.moveTo(50,750)
+            ctx.lineTo(750,750)
+            ctx.lineWidth = 2
+            ctx.strokeStyle = "blue"
+            ctx.stroke()
+
+            ctx.fillStyle = "yellow"
+            ctx.fillRect(600,700,50,50)
+            ctx.strokeRect(600,700,50,50)
+
+            ctx.beginPath()
+            ctx.rect(550,600,50,150)
+            ctx.rect(100,650,50,100)
+            ctx.fillStyle = "green"
+            ctx.fill()
+            ctx.stroke( )
+
+
+            ctx.beginPath()
+            ctx.moveTo(150,500)
+            ctx.lineTo(350,400)
+            ctx.lineTo(550,600)
+            ctx.lineTo(550,750)
+            ctx.lineTo(450,750)
+            ctx.lineTo(450,600)
+            ctx.arc(350,600,100,Math.PI*2,Math.PI,true)
+            ctx.lineTo(250,750)
+            ctx.lineTo(150,750)
+            ctx.closePath()  //關閉路徑
+            ctx.fillStyle = "blue"
+            ctx.fill()
+            ctx.strokeStyle = "red"
+            ctx.stroke()
+
+            ctx.strokeStyle = "orange"
+            ctx.beginPath()
+            ctx.moveTo(350,400)
+            ctx.lineTo(350,150 + mouse.y/10)
+            ctx.stroke()
+
+ 
+
+            //flag
+            ctx.beginPath()            
+            ctx.moveTo(350,150 )
+            ctx.lineTo(400 + mouse.x/10 ,175 - time%5 )
+            ctx.lineTo(350,200 - mouse.y/10)
+            ctx.closePath()
+            ctx.fillStyle = "#4F9D9D"
+            ctx.fill()
+
+
+            ctx.strokeStyle = "#17a2b8"  
+            ctx.fillStyle = "cyan"
+
+
+            //car
+            let car = time%800-50
+            ctx.fillRect(car,725,50,25)
+            ctx.strokeRect(car,725,50,25)            
+   
+
+            //mouse
+            ctx.beginPath()
+            ctx.arc(mouse.x,mouse.y,5,0,Math.PI*2)
+            ctx.fillStyle = 'black'
+            ctx.fill()
+
+
+
+      }
+      setInterval(draw,30)
+      var mouse = { x: 0,y: 0 }
+      meme.addEventListener("mousemove",position)
+      
+      function position(event) {
+        mouse.x = event.offsetX
+        mouse.y = event.offsetY
+        console.log(mouse.x,mouse.y)
+      }
+
+
+
+    </script>
+
+
+</body>
+</html>

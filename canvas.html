@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        canvas{
+            border: 1px solid #000000;
+       
+        }
+
+      </style>
+    <canvas id="meme"></canvas>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+
+
+        var meme = document.getElementById("meme")
+        var ctx = meme.getContext('2d');
+        
+        meme.width = 800  
+        meme.height = 800  
+        
+
+         
+          ctx.strokeStyle='#009393';
+          
+         
+        // ctx.fillRect(50,50,100,100)
+        // ctx.fillRect(300,300,600,600)
+
+        // ctx.beginPath()
+        // ctx.moveTo(100,100)
+        // ctx.lineTo(300,100)
+        // ctx.lineTo(300,300)
+        // ctx.lineTo(100,300)
+        // ctx.closePath()
+        
+        
+        
+        ctx.fill()
+
+
+        ctx.beginPath(300,300)
+
+
+        // ctx.moveTo(100,100)
+        // ctx.lineTo(300,100)
+        // ctx.lineTo(300,300)
+        // ctx.lineTo(100,300)
+        // ctx.closePath()
+        // ctx.rect(300, 300, 200,200);
+
+
+        ctx.arc(400,400,50,0,2* Math.PI)
+       
+        ctx.fillStyle="red"
+        ctx.fill()
+ ctx.closePath()
+
+        ctx.fillStyle = "yellow"
+        ctx.fillRect( 200,200, 100 ,100)
+        ctx.beginPath()
+ ctx.fillStyle="#46A3FF"
+        ctx.arc(600,600,50,0,2*Math.PI)
+
+        ctx.fill()
+
+    </script>
+
+
+</body>
+</html>
