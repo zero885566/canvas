@@ -131,6 +131,8 @@
             //-------------------------
             //   在這裡繪製
 
+            let deg = Math.PI/180   
+
             ctx.beginPath()
             ctx.moveTo( ww/2 ,0 )
             ctx.lineTo( ww/2 , wh )
@@ -139,6 +141,68 @@
             ctx.strokeStyle = "#fff"
             ctx.stroke()
 
+
+            ctx.save()
+                ctx.translate( ww/2 , wh/2)
+                let delta = mousePos.sub( new Vec2( ww/2 , wh/2 ))
+                let mouseAngle = delta.angle
+                let mouseDistace = delta.length
+
+                ctx.beginPath()
+                ctx.moveTo( 0,0 )
+                ctx.lineTo( delta.x , delta.y )
+                ctx.strokeStyle = "orange"
+                ctx.stroke()
+                ctx.beginPath()
+                ctx.arc( 0 , 0 , mouseDistace  , 0 , Math.PI*2 )
+                ctx.strokeStyle = "green"
+                ctx.stroke()
+
+                ctx.fillStyle = "white"
+                ctx.fillText( parseInt(mouseAngle/deg) , 10 , -10  )
+                ctx.fillText( 'r = ' + mouseDistace , mouseDistace + 10 , -10 )
+
+                ctx.beginPath()
+                ctx.moveTo( 0 , 0 )
+                let light_r = mouseDistace
+
+                ctx.save()
+                    ctx.rotate( mouseAngle - 10*deg )
+                    ctx.lineTo( light_r , 0 )
+                    ctx.rotate( 20*deg )
+                    ctx.lineTo( light_r , 0 )
+                    ctx.fillStyle = "rgb(3 218 255)"
+                    ctx.fill()
+                ctx.restore()
+
+
+                let enemies = [
+                    { r:150, angle:60 },
+                    { r:180, angle:160 },
+                    { r:150, angle:260 },
+                    { r:220, angle:300 },
+                ]
+
+                enemies.forEach( p => {
+
+                    ctx.save()
+                      ctx.beginPath()
+                        ctx.rotate( p.angle*deg )
+                        ctx.translate( p.r , 0) 
+                        ctx.arc( 0 , 0 , 5 , 0 , Math.PI*2 ) 
+                        let color = ''
+
+                        if( Math.abs( p.angle*deg - mouseAngle ) < 10*deg){
+                            color = "yellow"
+                        }
+                        ctx.fillStyle = color
+                      ctx.fill()
+                    ctx.restore()
+
+
+                })
+
+            ctx.restore()
 
             //-----------------------
             //繪製滑鼠座標
